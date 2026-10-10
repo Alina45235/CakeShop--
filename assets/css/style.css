@@ -1,0 +1,485 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap");
+
+:root {
+  --dark: #1a3a34;
+  --dark-2: #24524a;
+  --accent: #7fb8a4;
+  --accent-2: #5a9d86;
+  --gold: #d4af6a;
+  --gold-dark: #b8944a;
+  --bg: #f7f5f0;
+  --bg-2: #efece4;
+  --white: #ffffff;
+  --text: #1c2a26;
+  --text-muted: #7a8a85;
+  --border: #e5e0d5;
+  --danger: #c25060;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 2px 14px rgba(26, 58, 52, 0.06);
+  --shadow-lg: 0 16px 40px rgba(26, 58, 52, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============ HEADER ============ */
+.site-header {
+  background: var(--dark);
+  padding: 22px 0;
+  margin-bottom: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 24px rgba(26, 58, 52, 0.18);
+}
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.logo {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+.logo::before {
+  content: "◆ ";
+  color: var(--gold);
+  font-size: 18px;
+  vertical-align: middle;
+}
+.logo:hover {
+  color: var(--gold);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.main-nav a {
+  padding: 10px 18px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  transition: all 0.2s;
+}
+.main-nav a:hover {
+  background: rgba(127, 184, 164, 0.18);
+  color: var(--accent);
+}
+
+/* ============ FLASH ============ */
+.flash {
+  background: linear-gradient(135deg, #e8f2ee, #d5e8e0);
+  border-left: 4px solid var(--accent-2);
+  padding: 16px 22px;
+  margin-bottom: 32px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--dark);
+  font-weight: 500;
+  animation: slideDown 0.3s ease;
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============ ЗАГОЛОВКИ ============ */
+h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+  color: var(--dark);
+  position: relative;
+  padding-bottom: 20px;
+}
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70px;
+  height: 2px;
+  background: var(--gold);
+}
+h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 36px 0 18px;
+  color: var(--dark);
+  letter-spacing: 0.2px;
+}
+
+/* ============ СЕТКА КАТАЛОГА ============ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+}
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
+}
+.card > a {
+  overflow: hidden;
+  display: block;
+  position: relative;
+}
+.card > a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(26, 58, 52, 0.15));
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.card:hover > a::after {
+  opacity: 1;
+}
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  background: var(--bg-2);
+  display: block;
+  transition: transform 0.5s ease;
+}
+.card:hover img {
+  transform: scale(1.06);
+}
+.card-body {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-body h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  margin: 0 0 10px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0;
+}
+.card-price {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+.card-price::after {
+  content: " ₽";
+  font-size: 18px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-left: 2px;
+}
+.card-body .btn {
+  margin-top: auto;
+  text-align: center;
+}
+
+/* ============ КНОПКИ ============ */
+.btn {
+  display: inline-block;
+  background: var(--dark);
+  color: #fff;
+  padding: 13px 24px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: 0.4px;
+}
+.btn:hover {
+  background: var(--dark-2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(26, 58, 52, 0.25);
+  color: #fff;
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--dark);
+  border: 1.5px solid var(--border);
+}
+.btn-secondary:hover {
+  background: var(--bg-2);
+  color: var(--dark);
+  border-color: var(--accent);
+  box-shadow: none;
+}
+.btn-danger {
+  background: var(--danger);
+}
+.btn-danger:hover {
+  background: #a53d4c;
+}
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+/* ============ ФОРМЫ ============ */
+.form-group {
+  margin-bottom: 22px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--dark);
+  letter-spacing: 0.2px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 13px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-family: inherit;
+  background: #fff;
+  color: var(--text);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(127, 184, 164, 0.18);
+}
+.form-group textarea {
+  resize: vertical;
+}
+
+form[style*="max-width"] {
+  background: #fff;
+  padding: 36px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+/* ============ ТАБЛИЦЫ ============ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin: 28px 0;
+  border: 1px solid var(--border);
+}
+th,
+td {
+  padding: 18px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+th {
+  background: var(--dark);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.85);
+}
+tbody tr:last-child td {
+  border-bottom: none;
+}
+tbody tr {
+  transition: background 0.15s;
+}
+tbody tr:hover {
+  background: #faf9f5;
+}
+tfoot th {
+  background: var(--bg-2);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--dark);
+  font-weight: 700;
+}
+
+/* ============ СТАТУСЫ ============ */
+.status {
+  padding: 7px 16px;
+  border-radius: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.status-new {
+  background: #dce8f5;
+  color: #2a5182;
+}
+.status-confirmed {
+  background: #d8ecdf;
+  color: #2d6b45;
+}
+.status-preparing {
+  background: #f5e8d0;
+  color: #8a6520;
+}
+.status-delivering {
+  background: #e8ddf0;
+  color: #5a3a80;
+}
+.status-done {
+  background: #d4ead8;
+  color: #1e4a2a;
+}
+.status-cancelled {
+  background: #f5dade;
+  color: #8a2a38;
+}
+
+/* ============ ФИЛЬТРЫ ============ */
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 32px 0;
+  background: #fff;
+  padding: 22px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.filters input,
+.filters select {
+  padding: 12px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+  color: var(--text);
+  flex: 1;
+  min-width: 130px;
+  transition: border-color 0.2s;
+}
+.filters input:focus,
+.filters select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(127, 184, 164, 0.18);
+}
+.filters .btn {
+  flex: 0;
+}
+
+/* ============ FOOTER ============ */
+.site-footer {
+  margin-top: 120px;
+  padding: 44px 0;
+  background: var(--dark);
+  color: rgba(255, 255, 255, 0.72);
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  position: relative;
+}
+.site-footer .container::before {
+  content: "◆";
+  display: block;
+  color: var(--gold);
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+
+/* ============ ПРОЧЕЕ ============ */
+a {
+  color: var(--accent-2);
+  transition: color 0.15s;
+}
+a:hover {
+  color: var(--dark);
+}
+
+p {
+  margin-bottom: 14px;
+}
+img {
+  max-width: 100%;
+}
